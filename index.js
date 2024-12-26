@@ -21,20 +21,55 @@ function displayWeatherDetails()
     .then((result) => {
         document.querySelector('#cityName').innerText = city;
         let temperatureC = (result?.main?.temp - 273.15).toFixed(1);
-        console.log(`Temperature in °C= ${temperatureC}`);
-        document.querySelector('#temperature').innerText = `${temperatureC}°C`;
+            console.log(`Temperature in °C= ${temperatureC}`);
+            document.querySelector('#temperature').innerText = `${temperatureC}°C`;
+            
+            let feelsLikeC = (result?.main?.feels_like - 273.15).toFixed(1);
+            console.log(`Feels Like= ${feelsLike}`);
+            document.querySelector('#feelsLike').innerText = `${feelsLikeC}°C`;
+            
+            let minC = (result?.main?.temp_min - 273.15).toFixed(1);
+            console.log(`Min= ${min}`);
+            document.querySelector('#min').innerText = `${minC}°C`;
+            
+            let maxC = (result?.main?.temp_max - 273.15).toFixed(1);
+            console.log(`Max= ${max}`);
+            document.querySelector('#max').innerText = `${maxC}°C`;
+        document.querySelector('#celcius').addEventListener('click', function(){
+            let temperatureC = (result?.main?.temp - 273.15).toFixed(1);
+            console.log(`Temperature in °C= ${temperatureC}`);
+            document.querySelector('#temperature').innerText = `${temperatureC}°C`;
+            
+            let feelsLikeC = (result?.main?.feels_like - 273.15).toFixed(1);
+            console.log(`Feels Like= ${feelsLike}`);
+            document.querySelector('#feelsLike').innerText = `${feelsLikeC}°C`;
+            
+            let minC = (result?.main?.temp_min - 273.15).toFixed(1);
+            console.log(`Min= ${min}`);
+            document.querySelector('#min').innerText = `${minC}°C`;
+            
+            let maxC = (result?.main?.temp_max - 273.15).toFixed(1);
+            console.log(`Max= ${max}`);
+            document.querySelector('#max').innerText = `${maxC}°C`;
+        });
         
-        let feelsLike = (result?.main?.feels_like - 273.15).toFixed(1);
-        console.log(`Feels Like= ${feelsLike}`);
-        document.querySelector('#feelsLike').innerText = `${feelsLike}°C`;
-        
-        let min = (result?.main?.temp_min - 273.15).toFixed(1);
-        console.log(`Min= ${min}`);
-        document.querySelector('#min').innerText = `${min}°C`;
-        
-        let max = (result?.main?.temp_max - 273.15).toFixed(1);
-        console.log(`Max= ${max}`);
-        document.querySelector('#max').innerText = `${max}°C`;
+        document.querySelector('#farenheit').addEventListener('click', function(){
+            let temperatureF = ((result?.main?.temp - 273.15) * 9/5 + 32).toFixed(1);
+            console.log(`Temperature in °F= ${temperatureC}`);
+            document.querySelector('#temperature').innerText = `${temperatureF}°F`;
+            
+            let feelsLikeF = ((result?.main?.feels_like - 273.15) * 9/5 +32).toFixed(1);
+            console.log(`Feels Like= ${feelsLike}`);
+            document.querySelector('#feelsLike').innerText = `${feelsLikeF}°F`;
+            
+            let minF = ((result?.main?.temp_min - 273.15) * 9/5 +32).toFixed(1);
+            console.log(`Min= ${min}`);
+            document.querySelector('#min').innerText = `${minF}°F`;
+            
+            let maxF = ((result?.main?.temp_max - 273.15) * 9/5 +32).toFixed(1);
+            console.log(`Max= ${max}`);
+            document.querySelector('#max').innerText = `${maxF}°F`;
+        });
         
         let humidity = result?.main?.humidity
         console.log(`Humidity= ${humidity}%`);
@@ -101,9 +136,6 @@ document.querySelector('#search').addEventListener('keypress', function(event){
 
 document.querySelector('#celcius').addEventListener('click',displayWeatherDetails);
 
-// document.querySelector('#farenheit').addEventListener('click', function(){
-//     let temperatureF = ((result?.main?.temp - 273.15) * 9/5 + 32).toFixed(1);
-//         console.log(`Temperature in °F= ${temperatureF}`);
-
-    
-// });
+window.addEventListener('load', function() {
+    document.querySelector('#search').focus();
+});
