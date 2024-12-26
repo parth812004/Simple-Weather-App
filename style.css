@@ -1,0 +1,15 @@
+span#condition {
+    font-size: 40px;
+}
+div#error{
+    display: none;
+}
+div#details{
+    display: none;
+}
+div.card{
+    display: none;
+}
+div#units{
+    display: none;
+}
